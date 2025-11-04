@@ -10,8 +10,21 @@ import FriendRequest from '../FriendRequest/FriendRequest';
 import MyGroups from '../MyGroups/MyGroups';
 import UserList from '../UserList/UserList';
 import BlockedUsers from '../BlockedUsers/BlockedUsers';
+import { getAuth, signOut } from "firebase/auth";
+
 
 const Sidebar = () => {
+
+    const handleLogout= () => {
+        const auth = getAuth();
+        signOut(auth).then( () =>{
+            localStorage.clear();
+            window.location.reload();
+        })
+        .catch((error) =>{
+            console.error("Logout error:", error);
+        });
+    }
     return (
         <>
             <div className='p-[35px] flex'>
@@ -39,9 +52,9 @@ const Sidebar = () => {
                         </div>
                     </div>
 
-                    <div className='absolute left-[50%] translate-x-[-50%] bottom-[48px]'>
+                    <div  className='absolute left-[50%] translate-x-[-50%] bottom-[48px]'>
 
-                        <ImExit className='text-5xl text-white' />
+                        <ImExit onClick={handleLogout}  className='text-5xl text-white' />
 
                     </div>
 

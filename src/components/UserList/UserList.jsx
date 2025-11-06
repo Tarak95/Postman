@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import raghav from "../../assets/raghav.png"
 import swathi from "../../assets/swathi.png"
@@ -7,8 +7,27 @@ import tejesh from "../../assets/tejesh.png"
 import marvin from "../../assets/marvin.png"
 import { FaSquarePlus } from "react-icons/fa6";
 
+import { MdAddBox } from "react-icons/md";
+import { getDatabase, ref, onValue } from "firebase/database";
+
 
 const UserList = () => {
+      const db = getDatabase();
+  const [userList, setUserList] = useState([]); 
+
+  useEffect(() => {
+    const useRef = ref(db, "users");
+    onValue(useRef, (snapshot) => {
+      let arr = [];
+      snapshot.forEach((item) => {
+        arr.push(item.val());
+      });
+      setUserList(arr);
+    });
+  }, []);
+  console.log(userList);
+
+
     return (
         <div className='shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] p-[20px] rounded-[20px] ml-[43px] h-[347px] overflow-y-scroll'>
             <div className='flex items-center'>
@@ -16,14 +35,17 @@ const UserList = () => {
                 <HiOutlineDotsVertical className='ml-[201px]' />
             </div>
 
-            <div className='relative flex items-center mt-[29px]'>
+             {
+                userList.map((user)=>
+
+                       <div className='relative flex items-center mt-[29px]'>
                 <div>
                     <img src={raghav} alt="" />
                 </div>
 
                 <div className='ml-[14px]'>
-                    <p className='font-primary font-semibold text-[14px]'>Raghav</p>
-                    <p className='font-primary font-medium text-[10px] text-[#4D4D4D]/75'>Today, 8:56pm</p>
+                    <p className='font-primary font-semibold text-[14px]'>{user.username}</p>
+                    <p className='font-primary font-medium text-[10px] text-[#4D4D4D]/75'>{user.email}</p>
                 </div>
 
                 <div className='ml-[89px]'>
@@ -32,8 +54,12 @@ const UserList = () => {
 
                 <div className='absolute bottom-[-10px] left-0 h-[1px] w-[277px] bg-black/25'></div>
             </div>
+                )
+             }
+           
+         
 
-
+{/* 
 
 
             <div className='relative flex items-center mt-[25px]'>
@@ -110,7 +136,7 @@ const UserList = () => {
                     <FaSquarePlus className='text-[30px]' />
                 </div>
 
-            </div>
+            </div> */}
 
 
 

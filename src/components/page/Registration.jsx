@@ -6,10 +6,15 @@ import { FaEyeSlash } from "react-icons/fa";
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
 
+import { getDatabase, ref, set } from "firebase/database";
+
 import { Circles } from 'react-loader-spinner'
 
 
 const Registration = () => {
+
+    const db = getDatabase();
+
     const auth = getAuth();
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
@@ -97,6 +102,11 @@ const Registration = () => {
                     setFullName("")
                     setPassword("")
                     // setLoading(false);
+
+                    set(ref(db, 'users/' + user.user.uid), {
+                  username: fullName,
+                    email: email,
+  });
 
                 })
                 .catch((error) => {

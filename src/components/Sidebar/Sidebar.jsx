@@ -12,8 +12,12 @@ import UserList from '../UserList/UserList';
 import BlockedUsers from '../BlockedUsers/BlockedUsers';
 import { getAuth, signOut } from "firebase/auth";
 
+import {useSelector} from 'react-redux'
+
 
 const Sidebar = () => {
+
+    const data = useSelector((selector)=> (selector.userInfo.value.user))
 
     const handleLogout= () => {
         const auth = getAuth();
@@ -31,6 +35,9 @@ const Sidebar = () => {
                 <div className='bg-[#1E1E1E] font-primary text-white w-[186px] h-screen rounded-[20px] relative'>
                     <div className='flex justify-center pt-[38px]'>
                         <img src={profilepic} alt="" />
+                    </div>
+                    <div className='flex justify-center pt-2 text-xl font-bold text-white'>
+                        <p>{data?.displayName}</p>
                     </div>
 
                     <div>

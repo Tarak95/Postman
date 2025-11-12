@@ -17,7 +17,9 @@ import {useSelector} from 'react-redux'
 
 const Sidebar = () => {
 
-    const data = useSelector((selector)=> (selector.userInfo.value.user))
+    const data = useSelector((selector)=> (selector?.userInfo?.value))
+    console.log(data);
+    
 
     const handleLogout= () => {
         const auth = getAuth();
@@ -37,7 +39,7 @@ const Sidebar = () => {
                         <img src={profilepic} alt="" />
                     </div>
                     <div className='flex justify-center pt-2 text-xl font-bold text-white'>
-                        <p>{data?.displayName}</p>
+                        <p>{data?.displayName ||data?.user?.displayName}</p>
                     </div>
 
                     <div>

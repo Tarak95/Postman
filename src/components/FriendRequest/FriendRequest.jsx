@@ -1,126 +1,59 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import raghav from "../../assets/raghav.png"
 import swathi from "../../assets/swathi.png"
 import kiran from "../../assets/kiran.png"
 import tejesh from "../../assets/tejesh.png"
 
+import { getDatabase, onValue, ref } from 'firebase/database';
+
 const FriendRequest = () => {
-    return (
-        <div className=' py-[13px] px-[20px]  ml-[43px] h-[347px] overflow-y-scroll'>
+  const db = getDatabase();
+  const [friendRequestList, setFriendRequestList] = useState([]);
+
+  useEffect(() => {
+    const friendRequestListRef = ref(db, 'friendRequest');
+    onValue(friendRequestListRef, (snapshot) => {
+      let arr = [];
+      snapshot.forEach((item) => {
+        arr.push(item.val());
+      });
+      setFriendRequestList(arr);
+    });
+  }, []);
+
+  console.log(friendRequestList);
+
+  return (
+    <div className='py-[13px] px-[20px] ml-[43px] h-[347px] overflow-y-scroll'>
+      <div className='flex items-center'>
+        <h1 className='font-primary font-semibold text-[20px]'>Friend Request</h1>
+        <HiOutlineDotsVertical className='text-xl' />
+      </div>
+
+      {
+        friendRequestList.map((friendRequest, index) => (
+          <div
+            key={index}
+            className='flex justify-between items-center mt-[17px] border-b pb-[13px] border-black/25'
+          >
             <div className='flex items-center'>
-                <h1 className='font-primary font-semibold text-[20px]'>Friend Request</h1>
-                <HiOutlineDotsVertical className='ml-[220px]' />
+              <img src={tejesh} alt="" />
+              <div className='ml-[14px]'>
+                <h3 className='font-semibold font-primary text-[18px]'>
+                  {friendRequest.receiverName}
+                </h3>
+              </div>
             </div>
 
-            <div className='relative flex items-center mt-[17px]'>
-                <div>
-                    <img src={raghav} alt="" />
-                </div>
-
-                <div className='ml-[14px]'>
-                    <p className='font-primary font-semibold text-[18px]'>Raghav</p>
-                    <p className='font-primary font-medium text-[14px] text-[#4D4D4D]/75'>Dinner?</p>
-                </div>
-
-                <div className='ml-[104px]'>
-                    <button className='font-primary font-semibold text-[20px] text-white bg-[#1E1E1E] px-[8px] rounded-[5px] cursor-pointer'>Accept</button>
-                </div>
-
-                <div className='absolute bottom-[-15px] left-0 h-[1px] w-[371px] bg-black/25'></div>
-            </div>
-
-
-
-
-
-
-
-            <div className='relative flex items-center mt-[28px]'>
-                <div>
-                    <img src={swathi} alt="" />
-                </div>
-
-                <div className='ml-[14px]'>
-                    <p className='font-primary font-semibold text-[18px]'>Swathi</p>
-                    <p className='font-primary font-medium text-[14px] text-[#4D4D4D]/75'>Sure!</p>
-                </div>
-
-                <div className='ml-[112px]'>
-                    <button className='font-primary font-semibold text-[20px] text-white bg-[#1E1E1E] px-[8px] rounded-[5px] cursor-pointer'>Accept</button>
-                </div>
-
-                <div className='absolute bottom-[-15px] left-0 h-[1px] w-[371px] bg-black/25'></div>
-            </div>
-
-
-
-
-
-
-
-
-
-            <div className='relative flex items-center mt-[28px]'>
-                <div>
-                    <img src={kiran} alt="" />
-                </div>
-
-                <div className='ml-[14px]'>
-                    <p className='font-primary font-semibold text-[18px]'>Kiran</p>
-                    <p className='font-primary font-medium text-[14px] text-[#4D4D4D]/75'>Hi.....</p>
-                </div>
-
-                <div className='ml-[126px]'>
-                    <button className='font-primary font-semibold text-[20px] text-white bg-[#1E1E1E] px-[8px] rounded-[5px] cursor-pointer'>Accept</button>
-                </div>
-
-                <div className='absolute bottom-[-15px] left-0 h-[1px] w-[371px] bg-black/25'></div>
-
-            </div>
-
-
-
-
-
-            <div className='relative flex items-center mt-[28px]'>
-                <div>
-                    <img src={tejesh} alt="" />
-                </div>
-
-                <div className='ml-[14px]'>
-                    <p className='font-primary font-semibold text-[18px]'>Tejeshwini C</p>
-                    <p className='font-primary font-medium text-[14px] text-[#4D4D4D]/75'>I will call him today.</p>
-                </div>
-
-                <div className='ml-[39px]'>
-                    <button className='font-primary font-semibold text-[20px] text-white bg-[#1E1E1E] px-[8px] rounded-[5px] cursor-pointer'>Accept</button>
-                </div>
-
-                
-
-            </div>
-            <div className='relative flex items-center mt-[28px]'>
-                <div>
-                    <img src={tejesh} alt="" />
-                </div>
-
-                <div className='ml-[14px]'>
-                    <p className='font-primary font-semibold text-[18px]'>Tejeshwini C</p>
-                    <p className='font-primary font-medium text-[14px] text-[#4D4D4D]/75'>I will call him today.</p>
-                </div>
-
-                <div className='ml-[39px]'>
-                    <button className='font-primary font-semibold text-[20px] text-white bg-[#1E1E1E] px-[8px] rounded-[5px] cursor-pointer'>Accept</button>
-                </div>
-
-                
-
-            </div>
-
-
-        </div>
-    )
+            <button className='font-primary font-semibold text-[20px] bg-[#1E1E1E] text-white px-[8px] py-[2px] rounded-[5px]'>
+              Accept
+            </button>
+          </div>
+        ))
+      }
+    </div>
+  )
 }
 
 export default FriendRequest

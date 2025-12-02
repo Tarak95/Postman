@@ -95,7 +95,7 @@ const GroupsList = () => {
                 <div>
                     {
                         show ?
-                            <button onClick={handleToggle} className='bg-pink-700 text-white rounded-[7px] font-bold cursor-pointer px-2 py-1'>Go Back</button>
+                            <button onClick={handleToggle} className='bg-pink-800 text-white rounded-[7px] font-bold cursor-pointer px-2 py-1'>Go Back</button>
                             :
                             <button onClick={handleToggle} className='bg-black text-white rounded-[7px] font-bold cursor-pointer px-2 py-1'>Create Group</button>
                     }

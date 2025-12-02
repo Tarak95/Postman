@@ -75,6 +75,8 @@ const Registration = () => {
                 setPasswordError("The string must contain at least 1 lowercase alphabetical character, at least 1 uppercase alphabetical character, at least 1 numeric character, at least one special character must be 6 characters or longer")
 
             }
+
+
             // if(!/(?=.*[a-z])/.test(password)){
             //     setPasswordError("The string must contain at least 1 lowercase alphabetical character")
             // } else if (!/(?=.*[A-Z])/.test(password)){
@@ -107,6 +109,8 @@ const Registration = () => {
                     setEmail("")
                     setFullName("")
                     setPassword("")
+
+
                     // setLoading(false);
 
                     set(ref(db, 'users/' + user.user.uid), {
@@ -150,6 +154,8 @@ const Registration = () => {
                 draggable
                 pauseOnHover
                 theme="dark"
+
+                
             // transition={Bounce}
             />
             <div className='flex items-center'>

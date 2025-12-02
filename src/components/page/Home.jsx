@@ -3,6 +3,12 @@ import { useSelector } from 'react-redux'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Link, useNavigate } from 'react-router';
 import Sidebar from '../Sidebar/Sidebar';
+import GroupsList from '../GroupsList/GroupsList';
+import Friends from '../Friends/Friends';
+import UserList from '../UserList/UserList';
+import FriendRequest from '../FriendRequest/FriendRequest';
+import MyGroups from '../MyGroups/MyGroups';
+import BlockedUsers from '../BlockedUsers/BlockedUsers';
 
 const Home = () => {
     const auth = getAuth();
@@ -11,6 +17,7 @@ const Home = () => {
 
 
     const data = useSelector(state => (state.userInfo.value))
+    console.log(data, "Data")
 
 
     const [verify, setVerify] = useState(false)
@@ -21,10 +28,10 @@ const Home = () => {
         if (!data) {
             navigate("/login")
         }
-    })
+    },[])
 
     onAuthStateChanged(auth, (user) => {
-        if (user.emailVerified) {
+        if (user?.emailVerified) {
             setVerify(true)
         }
         setLoading(false)
@@ -32,31 +39,47 @@ const Home = () => {
 
 
     if (loading) {
-        return null
+        return " ";
     }
-   
+    
 
     return (
         <div>
             {
                 verify ?
                     <div>
-                        <Sidebar></Sidebar>
+                        <div className='flex m-[35px]'>
+                            <Sidebar active="home"></Sidebar>
+                            <div className='w-[427px] ml-[43px]'>
+                                <GroupsList></GroupsList>
+                                <FriendRequest></FriendRequest>
+                            </div>
+
+                            <div className='w-[427px] ml-[43px]'>
+                                <Friends></Friends>
+                                <MyGroups></MyGroups>
+                            </div>
+
+                            <div className='w-[427px] ml-[43px]'>
+                                <UserList></UserList>
+                                <BlockedUsers></BlockedUsers>
+                            </div>
+                            
+                        </div>
+
                     </div>
                     :
-                    
-                          <div className='bg-black w-full h-screen flex justify-center items-center font-primary text-center'>
+                    <div className='bg-black w-full h-screen flex justify-center items-center font-primary text-center'>
                         <div>
-                            <p className='text-4xl text-[#FF1F35] font-bold py-10'>Please verify your email</p>
+                            <p className='text-4xl text-white font-bold py-10'>Please verify your email</p>
 
 
-                            <Link to="/login" className='py-[10px] cursor-pointer bg-[#31EDAE] pl-[10px] pr-[10px] text-black font-secondary text-[16px] font-semibold rounded-[9px] mt-[10px]'>Go Back to Login
+                            <Link to="/login" className='py-[10px] cursor-pointer bg-white pl-[10px] pr-[10px] text-black font-secondary text-[16px] font-semibold rounded-[9px] mt-[10px]'>Go Back to Login
 
                             </Link>
 
                         </div>
                     </div>
-               
             }
         </div>
     )

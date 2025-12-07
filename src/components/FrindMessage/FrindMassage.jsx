@@ -59,7 +59,7 @@ const FrindMessage = () => {
             }))
 
         }
-        // localStorage.setItem("activeChatInfo", JSON.stringify(activeData))
+        
 
     }
     return (

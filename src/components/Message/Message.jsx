@@ -2,6 +2,8 @@ import React from 'react'
 import Sidebar from '../Sidebar/Sidebar'
 import Friends from '../Friends/Friends'
 import ChatBox from '../ChatBox/ChatBox'
+import FrindMessage from "../FrindMessage/FrindMassage";
+
 
 const Message = () => {
     return (
@@ -9,17 +11,13 @@ const Message = () => {
             <div className='flex m-[35px]'>
                 <Sidebar active="message"/>
                 <div className='w-[427px] ml-[43px]'>
-                    <Friends/>
+                    <FrindMessage/>
                 </div>
 
                 <div className='w-[700px] ml-[43px]'>
                     <ChatBox/>
                 </div>
-
-                
-
             </div>
-
         </div>
     )
 }

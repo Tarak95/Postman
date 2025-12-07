@@ -5,12 +5,16 @@ import { TbTriangleFilled } from "react-icons/tb";
 import { MdOutlineEmojiEmotions } from "react-icons/md";
 import { CiCamera } from "react-icons/ci";
 import { FaTelegramPlane } from "react-icons/fa";
+import { useSelector } from 'react-redux';
 
 
 
 
 
 const ChatBox = () => {
+    const activeData = useSelector((state)=>state.activeChatInfo.value)
+    console.log(activeData);
+    
     return (
         <div className='shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] font-primary px-[50px] py-[25px] rounded-[20px]'>
             <div className='flex justify-between items-center border-b border-black/25 pb-[30px]'>
@@ -20,7 +24,15 @@ const ChatBox = () => {
                     </div>
 
                     <div>
-                        <h2 className='font-semibold text-[24px]'>Swathi </h2>
+                        <h2 className='font-semibold text-[24px]'>
+                            {
+                                activeData ?
+                                    <p>{activeData.name}</p>
+                                    :
+                                    <p>Unknown</p>
+                            }
+
+                        </h2>
                         <p>Online</p>
                     </div>
                 </div>

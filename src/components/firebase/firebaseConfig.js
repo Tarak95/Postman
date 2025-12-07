@@ -5,13 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCce5s4HAYcZ6b2mFxjz9-bO0b6xAzZblU",
-  authDomain: "postman-278d3.firebaseapp.com",
-  databaseURL: "https://postman-278d3-default-rtdb.firebaseio.com",
-  projectId: "postman-278d3",
-  storageBucket: "postman-278d3.firebasestorage.app",
-  messagingSenderId: "110096099675",
-  appId: "1:110096099675:web:d6e87340b2a1926cc5127e"
+  apiKey: "AIzaSyC99JKEPOHjhNmwdnT93T3bF1vbDHn2uKA",
+  authDomain: "postman-15fec.firebaseapp.com",
+  projectId: "postman-15fec",
+  storageBucket: "postman-15fec.firebasestorage.app",
+  messagingSenderId: "850465849388",
+  appId: "1:850465849388:web:95443ec29bc2ec3d5d1189"
 };
 
 // Initialize Firebase

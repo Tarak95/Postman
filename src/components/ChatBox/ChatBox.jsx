@@ -56,7 +56,7 @@ const ChatBox = () => {
 
                 <div className='my-2'>
                     <div className='relative'>
-                        <p className='py-[13px] px-[52px] bg-[#F1F1F1] inline-block font-medium rounded-[10px]'>Hey There !</p>
+                        <p className='py-[13px] px-[52px] bg-[#F1F1F1] inline-block font-medium rounded-[10px]'>Hey Theresety !</p>
 
                         <div className='absolute bottom-[-3px] left-[-10px]'>
                             <TbTriangleFilled className='text-[#F1F1F1] text-2xl' />

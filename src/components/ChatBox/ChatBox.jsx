@@ -59,7 +59,7 @@ const ChatBox = () => {
             })
             setMsgList(arr);
         });
-    }, [activeData.id])
+    }, [activeData?.id])
     console.log(msgList)
 
     const hendleEmoji = (emoji) =>{

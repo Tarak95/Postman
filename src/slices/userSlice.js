@@ -28,7 +28,13 @@ export const userSlice = createSlice({
       
       const updated = { ...state.value }
       localStorage.setItem("userInfo", JSON.stringify(updated))
-    }
+    },
+
+    userStatusUpdate: (state, action) => {
+      if(state.value && state.value.user){
+        state.value.user.status = action.payload
+        localStorage.setItem("userInfo", JSON.stringify(state.value))
+      }}
   },
 })
 

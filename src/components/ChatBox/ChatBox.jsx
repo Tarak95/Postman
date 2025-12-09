@@ -105,12 +105,12 @@ const ChatBox = () => {
 
                             <div className='my-2 text-end'>
                                 <div className='relative'>
-                                    <p className='py-[13px] px-[52px] bg-[#1E1E1E] text-white inline-block font-medium rounded-[10px]'>
+                                    <p className='py-[13px] px-[52px] bg-[#ba1065] text-white inline-block font-medium rounded-[10px]'>
                                         {item?.message}
                                     </p>
 
                                     <div className='absolute bottom-[-3px] right-[-10px]'>
-                                        <TbTriangleFilled className='text-[#1E1E1E] text-2xl' />
+                                        <TbTriangleFilled className='text-[#ba1065] text-2xl' />
                                     </div>
                                 </div>
                                 <p className='text-[12px] font-medium text-gray-400 mt-2'>

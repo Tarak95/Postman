@@ -7,6 +7,7 @@ import firebaseConfig from "./components/firebase/firebaseConfig";
 import ForgotPassword from "./components/page/ForgotPassword";
 import Home from "./components/page/Home";
 import Message from "./components/Message/Message";
+import Settings from "./components/page/Settings";
 
 
 function App() {
@@ -35,6 +36,10 @@ function App() {
     {
       path: "/msg",
       element: <Message></Message> ,
+    },
+    {
+      path: "/Settings",
+      element: <Settings/> ,
     },
 
   ]);

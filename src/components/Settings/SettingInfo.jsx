@@ -10,7 +10,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAuth, updateProfile } from 'firebase/auth';
 import { getDatabase, ref, update } from 'firebase/database';
 // import { userNameUpdate } from '../../slices/userSlice';
+
 import { userNameUpdate, userStatusUpdate } from '../../slices/userSlice';
+
+
 
 
 const SettingInfo = () => {

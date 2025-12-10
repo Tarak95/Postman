@@ -140,6 +140,10 @@ const SettingInfo = () => {
           <FaRegCircleQuestion className='text-[25px]' />
           <p className='text-lg font-semibold ml-[35px]'>Help.</p>
         </div>
+        
+         <div className='mt-[280px] text-center'>
+                <p className='text-[20px] text-[#000000]/50'>Chat App</p>
+            </div>
 
       </div>
     </div>

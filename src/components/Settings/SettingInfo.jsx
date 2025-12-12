@@ -71,10 +71,11 @@ const SettingInfo = () => {
   }
 
   return (
-    <div className='font-primary shadow p-5 mt-5 w-[700px]'>
-      <h2 className='text-3xl font-bold'>Profile Settings</h2>
+  
+     <div className='font-primary shadow p-5 mt-5 w-[700px] bg-[#141313] rounded-[20px] '>
+      <h2 className='text-white text-3xl font-bold ml-[20px]'>Profile Settings</h2>
 
-      <div className='flex items-center gap-x-5 mt-10 border-b py-5'>
+      <div className='text-white flex items-center gap-x-5 mt-10 border-b py-5 ml-[20px]'>
         <img className='w-[100px]' src={profilepic} alt="" />
         <div>
           <p className='text-2xl font-bold mb-2'>{data?.displayName}</p>
@@ -82,10 +83,10 @@ const SettingInfo = () => {
         </div>
       </div>
 
-      <div className='my-10'>
+      <div className='my-10 ml-[50px]'>
 
        
-        <div className='flex items-center'>
+        <div className='flex items-center text-white'>
           <RiEdit2Fill className='text-[25px]' />
           <p onClick={handleEditNameShow} className='text-lg font-semibold ml-[35px] cursor-pointer'>
             Edit Profile Name.
@@ -108,7 +109,7 @@ const SettingInfo = () => {
         )}
 
        
-        <div className='flex items-center mt-[10px]'>
+        <div className='text-white flex items-center mt-[10px]'>
           <BiSolidMessageSquareDots className='text-[25px]' />
           <p onClick={handleEditStatusShow} className='text-lg font-semibold ml-[35px] cursor-pointer'>
             Edit Profile Status Info.
@@ -131,22 +132,25 @@ const SettingInfo = () => {
         )}
 
         
-        <div className='flex items-center mt-[10px]'>
+        <div className='text-white flex items-center mt-[10px]'>
           <RiImageAddFill className='text-[25px]' />
           <p className='text-lg font-semibold ml-[35px]'>Edit Profile Photo.</p>
         </div>
 
-        <div className='flex items-center mt-[10px]'>
+        <div className='text-white flex items-center mt-[10px]'>
           <FaRegCircleQuestion className='text-[25px]' />
           <p className='text-lg font-semibold ml-[35px]'>Help.</p>
         </div>
         
-         <div className='mt-[280px] text-center'>
-                <p className='text-[20px] text-[#000000]/50'>Chat App</p>
+         
+          <div className='mt-[280px] text-center '>
+                <p className='text-white text-[20px]'>Chat App</p>
             </div>
+         
 
       </div>
     </div>
+  
   )
 }
 

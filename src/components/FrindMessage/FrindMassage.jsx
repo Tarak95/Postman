@@ -63,7 +63,10 @@ const FrindMessage = () => {
 
     }
     return (
-        <div className='shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] pt-[13px] pb-[21px] pl-[20px] pr-[22px]'>
+        <div className='shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] 
+            rounded-[20px] pt-[13px] pb-[21px] pl-[20px] pr-[22px]
+            bg-white dark:bg-[#1a1a1a]
+            text-black dark:text-white'>
             <div className='flex justify-between items-center'>
                 <h1 className='font-primary font-semibold text-[20px]'>Friends</h1>
                 <HiOutlineDotsVertical className='text-xl' />
@@ -89,7 +92,7 @@ const FrindMessage = () => {
                                 </div>
                             </div>
 
-                            <button onClick={() => handleMessage(item)} className='font-primary font-semibold text-[20px] bg-[#1E1E1E] text-white px-[22px] py-[2px] rounded-[5px]'>Message</button>
+                            <button onClick={() => handleMessage(item)} className='font-primary font-semibold text-[20px] bg-[#4D27F5] text-white px-[22px] py-[2px] rounded-[5px]'>Message</button>
 
                         </div>
 
